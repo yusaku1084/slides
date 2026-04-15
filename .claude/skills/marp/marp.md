@@ -47,6 +47,8 @@ style: |
   section.title h1 {
     font-size: 2.2em;
     font-weight: 800;
+    color: white;
+    border-bottom: none;
   }
   section.title p {
     font-size: 1em;
@@ -96,6 +98,14 @@ style: |
     color: white;
     padding: 0.2em 0.4em;
     border-radius: 4px;
+  }
+  section.closing pre {
+    background: rgba(0,0,0,0.3);
+    border-radius: 8px;
+  }
+  section.closing pre code {
+    background: transparent;
+    color: white;
   }
   .columns {
     display: grid;
@@ -197,6 +207,7 @@ style: |
 - **コード**：長いコードは分割して複数スライドに
 - **ビフォーアフター**：2カラムレイアウトを使う
 - **強調**：ハイライトボックスを使う
+- **余白**：`<br>` の多用は避ける。要素が多いスライドでは収まりきらなくなる
 
 ---
 

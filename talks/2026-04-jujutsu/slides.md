@@ -14,6 +14,8 @@ style: |
   section.title h1 {
     font-size: 2.2em;
     font-weight: 800;
+    color: white;
+    border-bottom: none;
   }
   section.title p {
     font-size: 1em;
@@ -63,6 +65,14 @@ style: |
     color: white;
     padding: 0.2em 0.4em;
     border-radius: 4px;
+  }
+  section.closing pre {
+    background: rgba(0,0,0,0.3);
+    border-radius: 8px;
+  }
+  section.closing pre code {
+    background: transparent;
+    color: white;
   }
   .columns {
     display: grid;
@@ -258,7 +268,6 @@ rebase / merge
 # AI時代に真価を発揮する
 
 **workspace機能で複数のClaude Codeを並行稼働**
-
 ```
 ~/myapp/          ← 自分が実装中
 ~/myapp-blue/     ← Claude Code がバグ修正中
@@ -266,8 +275,6 @@ rebase / merge
 ```
 
 ↑ **全部同じリポジトリを共有**
-
-<br>
 
 | | Git worktree | jj workspace |
 |---|---|---|
@@ -284,8 +291,6 @@ jj undo で安全 ＋ workspace で並行稼働。<br>AIのために作られた
 
 # 今日から試せます
 
-<br>
-
 ```bash
 # インストール
 brew install jj
@@ -294,12 +299,8 @@ brew install jj
 jj git init --colocate
 ```
 
-<br>
-
 - Gitをやめる必要はない
 - 気に入らなければいつでも戻せる
 - **まず自分だけこっそり使い始めてみてください**
-
-<br>
 
 ありがとうございました 🙏
