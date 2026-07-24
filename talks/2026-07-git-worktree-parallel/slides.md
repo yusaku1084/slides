@@ -122,7 +122,7 @@ paginate: true
 
 # Claude Codeを複数並列で飼う
 
-**git worktreeで作る並列開発環境と、盛大にハマった話**
+**git worktreeで作る並列開発環境**
 2026-07 曽我部祐作 / 社内LT会
 
 <!--
