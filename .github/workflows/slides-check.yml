@@ -1,0 +1,47 @@
+name: Slides Check
+
+# PRごとにスライドの基本チェックを行う（main へのデプロイ前に問題を見つけるため）
+on:
+  pull_request:
+    paths:
+      - 'talks/**'
+      - '.github/workflows/slides-check.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # frontmatter に title がないと、h1 の <br> などがそのままブラウザのタブ名になる
+      - name: Check frontmatter title
+        run: |
+          status=0
+          for f in talks/*/slides.md; do
+            if ! awk 'NR==1 && /^---$/ {fm=1; next} fm && /^---$/ {exit} fm && /^title:/ {found=1} END {exit !found}' "$f"; then
+              echo "::error file=$f::frontmatter に title: がありません（ブラウザのタブ名に使われます）"
+              status=1
+            fi
+          done
+          exit $status
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Marp CLI
+        run: npm install -g @marp-team/marp-cli
+
+      # デプロイと同じ条件（--html）でビルドできるか確認する
+      - name: Build slides
+        run: |
+          for dir in talks/*/; do
+            if [ -f "$dir/slides.md" ]; then
+              marp "$dir/slides.md" --html --output "/tmp/$(basename "$dir").html"
+            fi
+          done
