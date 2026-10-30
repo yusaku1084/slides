@@ -40,3 +40,4 @@ GitHubリポジトリの Settings → Pages → Source を `GitHub Actions` に�
 | 日付 | テーマ | リンク |
 |---|---|---|
 | 2026-04 | Jujutsu（jj）VCS入門 | - |
+| 2026-10 | GitHub Universe 2026：AIがコードを書く、その先へ | - |
